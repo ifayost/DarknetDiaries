@@ -1,0 +1,6 @@
+*.pyc                 # Compiled python files
+__pycache__/          # Python cache directories
+.env                   # Environment variables
+.DS_Store             # macOS specific files
+*.log                 # Log files
+*~                    # Backup files from editors
