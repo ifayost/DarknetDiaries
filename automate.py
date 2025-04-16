@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     print('\n\n[*] Generating the bash script to call the programm with the parameters.')
     call = '#!/bin/bash\n'
-    call += str(cwd / '.venv/bin/python3') + ' ' + str(cwd / 'main.py')
+    call += str(cwd / '.venv/bin/python3') + ' ' + str(cwd / 'DarknetDiaries.py')
     if args.path is not None:
         call += f' --path {args.path}'
     if args.transcript:
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     crontab = '0 9 1-7 * * [ "$(date \'+\%u\')" = "2" ] && DarknetDiaries'
     output = subprocess.check_output(['crontab', '-l']).decode()
     if crontab not in output:
-        crontab = '0 9 1-7 * * [ \\\"\$(date \'+\%u\')\\\" = \\\"2\\\" ] && DarknetDiaries'
+        crontab = '0 8 1-7 * * [ \\\"\$(date \'+\%u\')\\\" = \\\"2\\\" ] && DarknetDiaries'
         command = f'(crontab -l 2>/dev/null; echo "{crontab}") | crontab -'
         os.system(command)
     else:
