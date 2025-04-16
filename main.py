@@ -9,6 +9,8 @@ from pathlib import Path
 eyed3.log.setLevel("ERROR")
 
 
+# If you are experiencing problems with the filenames on exfat
+# formated hard drives uncoment the contents of this dictionary:
 exfat_illegal_chars = {
         # '"': "'",
         # '*': '',
