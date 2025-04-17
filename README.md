@@ -15,18 +15,17 @@ A Python-based script for downloading episodes from darknetdiaries.com, includin
   - Description: Episode summary and details
   - Track number
   - Cover art
+- Automates the download of new episodes every first Tuesday of the month.
 
 ## Installation
 
 ```bash
-git clone https://github.com/ifayost/DarknetDiaries.github
+git clone https://github.com/ifayost/DarknetDiaries.git
 cd DarknetDiaries
 python3 -m venv .venv
 source ./.venv/bin/activate
 pip3 install -r ./requirements.txt
 ```
-
-Note: You may need to use `sudo` depending on your system setup.
 
 ## Usage
 
@@ -109,6 +108,47 @@ By default, episodes are downloaded to `./Darknet\ Diaries/` and organized as fo
 │   └── transcript.txt (if downloaded)
 └── ...
 ```
+
+## Troubleshooting
+
+### ExFAT Filesystem Issues
+If you encounter issues with special characters in filenames when using an exFAT-formatted storage device, you can modify the exfat_illegal_chars dictionary in DarknetDiaries.py to replace illegal characters.
+
+1. Open DarknetDiaries.py and locate this section:
+```python
+# If you are experiencing problems with the filenames on exfat
+# formated hard drives uncomment the contents of this dictionary:
+exfat_illegal_chars = {
+        # '"': "'",
+        # '*': '',
+        # '/': '.',
+        # ':': '.',
+        # '<': '_',
+        # '>': '_',
+        # '?': '¿',
+        # '\\': '.',
+        # '|': '.'
+        } 
+```
+
+2. Uncomment the desired replacements by removing the `#` symbols:
+```python
+exfat_illegal_chars = {
+        '"': "'",
+        '*': '',
+        '/': '.',
+        ':': '.',
+        '<': '_',
+        '>': '_',
+        '?': '¿',
+        '\\': '.',
+        '|': '.'
+}
+```
+
+3. Save your changes and run again the script.
+
+The script will now replace illegal characters with the specified alternatives when saving files:
 
 ## Contributing
 
