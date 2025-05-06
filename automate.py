@@ -50,10 +50,10 @@ if __name__ == '__main__':
     print('    [+] Ok.')
 
     print('\n\n[*] Adding a cron job to the users crontab to execute the script every first Tuesday of the month.')
-    crontab = '0 8 1-7 * * [ "$(date \'+\%u\')" = "2" ] && DarknetDiaries'
+    crontab = '0 * 1-7 * * [ "$(date \'+\%u\')" = "2" ] && DarknetDiaries'
     output = subprocess.check_output(['crontab', '-l']).decode()
     if crontab not in output:
-        crontab = '0 8 1-7 * * [ \\\"\$(date \'+\%u\')\\\" = \\\"2\\\" ] && DarknetDiaries'
+        crontab = '0 * 1-7 * * [ \\\"\$(date \'+\%u\')\\\" = \\\"2\\\" ] && DarknetDiaries'
         command = f'(crontab -l 2>/dev/null; echo "{crontab}") | crontab -'
         os.system(command)
     else:
